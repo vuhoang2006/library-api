@@ -1,0 +1,76 @@
+### TC01 - Health Check
+GET http://localhost:8888/health
+
+### TC02 - List Books
+GET http://localhost:8888/books
+
+### TC03 - Filter Books
+GET http://localhost:8888/books?author=hùng&limit=1
+
+### TC04 - Book Detail
+GET http://localhost:8888/books/1
+
+### TC05 - Book Not Found
+GET http://localhost:8888/books/999
+
+### TC06 - Create Book
+POST http://localhost:8888/books
+Content-Type: application/json
+
+{
+  "isbn": "9786040000042",
+  "title": "Phát triển Web API với FastAPI",
+  "author": "Lê Minh Tuấn",
+  "year": 2024,
+  "quantity": 4
+}
+
+### TC07 - Duplicate ISBN
+POST http://localhost:8888/books
+Content-Type: application/json
+
+{
+  "isbn": "9786040000042",
+  "title": "Phát triển Web API với FastAPI",
+  "author": "Lê Minh Tuấn",
+  "year": 2024,
+  "quantity": 4
+}
+
+### TC08 - Invalid Book
+POST http://localhost:8888/books
+Content-Type: application/json
+
+{
+  "isbn": "123",
+  "title": "Sách lỗi",
+  "author": "Test",
+  "year": 1800,
+  "quantity": 1
+}
+
+### TC09 - Update All
+PUT http://localhost:8888/books/4
+Content-Type: application/json
+
+{
+  "isbn": "9786040000042",
+  "title": "Phát triển Web API với FastAPI (Đã sửa)",
+  "author": "Lê Minh Tuấn",
+  "year": 2024,
+  "quantity": 5
+}
+
+### TC10 - Update Partial
+PATCH http://localhost:8888/books/4
+Content-Type: application/json
+
+{
+  "quantity": 10
+}
+
+### TC11 - Delete Book
+DELETE http://localhost:8888/books/4
+
+### TC12 - Verify Deleted
+GET http://localhost:8888/books/4   
